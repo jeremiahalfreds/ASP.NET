@@ -9,15 +9,16 @@ namespace DiaryApp.Controllers
 {
     public class DiaryEntriesController : Controller
     {
-        private ApplicationDBContext _context;
-        public DiaryEntriesController(ApplicationDBContext context) 
+        private readonly ApplicationDBContext _db;
+        public DiaryEntriesController(ApplicationDBContext db) 
         {
-            _context = context;
+            _db = db;
         }
         public IActionResult Index()
         {
-            var diaryEntry = _context.DiaryEntries.ToList();
-            return View(diaryEntry);
+            var entries = _db.DiaryEntries.ToList();
+            //List<DiaryEntry> entries = _db.DiaryEntries.ToList();
+            return View(entries);
         }
         public IActionResult Create() 
         {

@@ -7,7 +7,7 @@ namespace DiaryApp.Data
     public class ApplicationDBContext : DbContext
     {
         // Constructor to connect to the DbContext & tap into the DB
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options) 
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
         }
 
