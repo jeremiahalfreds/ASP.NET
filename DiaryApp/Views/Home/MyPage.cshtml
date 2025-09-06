@@ -1,0 +1,77 @@
+﻿@using Microsoft.Extensions.Hosting
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var txt = "";
+    if(DateTime.Now.Hour > 2)
+    { 
+        txt = "Good Evening";
+    } 
+    else{ 
+        txt = "Good morning"; 
+    }
+
+    var weekday=DateTime.Now.DayOfWeek;
+    var day=weekday.ToString();
+    var message="";
+
+    var mssg = DateTime.UtcNow.AddDays(-3.0).Date;
+    if (DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
+    {
+        // mssg = DateTime.UtcNow.AddDays(-2).Date;
+        mssg.ToString();
+    }
+
+    ViewData["Title"] = "My Page"; // Page title
+}
+
+<h1>Welcome to @ViewData["Title"]</h1>
+<p>The message is @txt</p>
+<p>@mssg</p>
+
+@switch(day)
+{
+case "Monday":
+    message="This is the first weekday.";
+    break;
+case "Thursday":
+    message="Only one day before weekend.";
+    break;
+case "Friday":
+    message="Tomorrow is weekend!";
+    break;
+default:
+    message="Today is " + day;
+    break;
+}
+
+<p>@message</p>
+
+<table border="1">
+    <tr>
+        <th width="100px">Name</th>
+        <td width="100px">Value</td>
+    </tr>
+    <tr>
+        <td>Day</td>
+        <td>@DateTime.Now.Day</td>
+    </tr>
+    <tr>
+        <td>Hour</td>
+        <td>@DateTime.Now.Hour</td>
+    </tr>
+    <tr>
+        <td>Minute</td>
+        <td>@DateTime.Now.Minute</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>@DateTime.Now.Second</td>
+    </tr>
+    <tr>
+        <td>Today</td>
+        <td>@DateTime.Now.DayOfWeek</td>
+    </tr>
+</table>
+<p>@DateTime.Today.DayOfWeek</p>

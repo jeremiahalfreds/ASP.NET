@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Dairy Entries";
+
+    @model List<DiaryEntry>
+}
+
+<div class="text-center">
+    <p class="display-4">@ViewData["Title"]</p>
+    <hr />
+    <style>
+        .styled-btn {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: all 0.2s ease-in-out;
+        }
+
+            .styled-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            }
+
+            .styled-btn:active {
+                transform: scale(0.97);
+            }
+
+    </style>
+    <a class="styled-btn" asp-area="" asp-controller="DiaryEntries" asp-action="Create">Create Entry</a>
+    <br />
+    <table>
+        <thead>
+            <tr>
+                <th style="width:80px;">ID#</th>
+                <th style="width:150px;">Title</th>
+                <th style="width:200px;">Description</th>
+                <th style="width:150px;">CreatedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var diaryEntry in Model)
+            {
+                <tr>
+                    <td>@diaryEntry.Id</td>
+                    <td>@diaryEntry.Title</td>
+                    <td>@diaryEntry.Description</td>
+                    <td>@diaryEntry.CreatedAt</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
