@@ -16,21 +16,20 @@ namespace DiaryApp.Data
         public DbSet<Users> Users { get; set; } // create users table
 
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        //    modelBuilder.Entity<DiaryEntry>().HasData(
-        //     new DiaryEntry
-        //     {
-        //         Id = 11,
-        //         Title = "Went Shoppings",
-        //         Description = "Shoppings at the biggest mall in Istanbul is amazing.",
-        //         CreatedAt = new DateTime(2025, 9, 5),
-        //         UpdatedAt = new DateTime(2025, 9, 5)
-        //     }
-        //    );
-        //}
+            modelBuilder.Entity<DiaryEntry>().HasData(
+             new DiaryEntry
+             {
+                 Id = 21,
+                 Title = "Went Shopping",
+                 Description = "Shopping at the biggest mall in Istanbul is amazing.",
+                 CreatedAt = new DateTime(2025, 9, 5)
+             }
+            );
+        }
     }
 }
 

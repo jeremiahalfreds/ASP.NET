@@ -10,10 +10,7 @@ namespace DiaryApp.Controllers
     public class DiaryEntriesController : Controller
     {
         private readonly ApplicationDBContext _db;
-        public DiaryEntriesController(ApplicationDBContext db) 
-        {
-            _db = db;
-        }
+        public DiaryEntriesController(ApplicationDBContext db) => _db = db;
         public IActionResult Index()
         {
             var entries = _db.DiaryEntries.ToList();
@@ -23,6 +20,14 @@ namespace DiaryApp.Controllers
         public IActionResult Create() 
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(DiaryEntry diary)
+        {
+            _db.DiaryEntries.Add(diary); // Adds the new diary entry to the db
+            _db.SaveChanges(); // Saves the changes to the db
+            return RedirectToAction("Index");
         }
     }
 }

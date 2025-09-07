@@ -1,13 +1,37 @@
-﻿@{
+﻿@model DiaryEntry
+@{
     ViewData["Title"] = "Create Entry";
 }
 
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="card-header bg-info text-white">
-                <h2>Create Diary Entry</h2>
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h2 class="mb-0">Create Diary Entry</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        @* <div asp-validation-summary="All" class="text-danger"></div> *@
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Title</label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter title">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="8" placeholder="Enter description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary">Create Entry</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    if()
+}

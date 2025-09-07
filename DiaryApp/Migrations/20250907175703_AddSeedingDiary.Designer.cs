@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiaryApp.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250904165811_AddUsersTable")]
-    partial class AddUsersTable
+    [Migration("20250907175703_AddSeedingDiary")]
+    partial class AddSeedingDiary
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,19 +38,24 @@ namespace DiaryApp.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.ToTable("DiaryEntries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 21,
+                            CreatedAt = new DateTime(2025, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Shopping at the biggest mall in Istanbul is amazing.",
+                            Title = "Went Shopping"
+                        });
                 });
 
             modelBuilder.Entity("DiaryApp.Models.Users", b =>

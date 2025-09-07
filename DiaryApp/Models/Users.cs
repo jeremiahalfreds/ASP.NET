@@ -4,10 +4,10 @@ namespace DiaryApp.Models
 {
     public class Users
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Please enter your name")]
         public string Name { get; set; } = string.Empty;
 
         [Required]

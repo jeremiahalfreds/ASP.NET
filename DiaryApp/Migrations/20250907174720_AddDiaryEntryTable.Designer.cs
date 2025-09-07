@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiaryApp.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250904165821_AddDiaryEntryTable")]
+    [Migration("20250907174720_AddDiaryEntryTable")]
     partial class AddDiaryEntryTable
     {
         /// <inheritdoc />
@@ -38,15 +38,11 @@ namespace DiaryApp.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

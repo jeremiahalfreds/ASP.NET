@@ -35,15 +35,11 @@ namespace DiaryApp.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -52,11 +48,10 @@ namespace DiaryApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 11,
+                            Id = 21,
                             CreatedAt = new DateTime(2025, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Shoppings at the biggest mall in Istanbul is amazing.",
-                            Title = "Went Shoppings",
-                            UpdatedAt = new DateTime(2025, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Description = "Shopping at the biggest mall in Istanbul is amazing.",
+                            Title = "Went Shopping"
                         });
                 });
 
