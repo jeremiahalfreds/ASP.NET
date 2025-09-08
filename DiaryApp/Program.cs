@@ -11,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+
 // Service worker logging in the background
 builder.Services.AddHostedService<WorkerService>(); 
 
@@ -28,6 +29,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+app.UseSession(); // Enable session
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

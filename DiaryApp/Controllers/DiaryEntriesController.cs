@@ -12,12 +12,14 @@ namespace DiaryApp.Controllers
     {
         private readonly ApplicationDBContext _db;
         public DiaryEntriesController(ApplicationDBContext db) => _db = db;
+
         public IActionResult Index()
         {
             var entries = _db.DiaryEntries.ToList();
             //List<DiaryEntry> entries = _db.DiaryEntries.ToList();
             return View(entries);
         }
+
         public IActionResult Create() 
         {
             return View();
@@ -99,6 +101,23 @@ namespace DiaryApp.Controllers
             _db.DiaryEntries.Remove(diary); // Updates the new diary entry in the db
             _db.SaveChanges(); // Saves the changes to the db
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Show(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            DiaryEntry? diaryEntry = _db.DiaryEntries.Find(id);
+
+            if (diaryEntry == null)
+            {
+                return NotFound();
+            }
+
+            return View(diaryEntry);
         }
     }
 }
