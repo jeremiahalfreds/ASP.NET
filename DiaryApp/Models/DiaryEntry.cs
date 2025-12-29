@@ -4,7 +4,7 @@ namespace DiaryApp.Models
 {
     public class DiaryEntry
     {
-        //[Key] // annotation
+        [Key] // annotation
         public int Id { get; set; } // get the Id
         
         [Required] // annotation
@@ -16,7 +16,5 @@ namespace DiaryApp.Models
         
         [Required] // annotation
         public DateTime CreatedAt { get; set; } = DateTime.Now; // get datetime
-                
-        public DiaryEntry() { }
     }
 }

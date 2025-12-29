@@ -17,6 +17,8 @@ namespace DiaryApp.Controllers
         {
             var entries = _db.DiaryEntries.ToList();
             //List<DiaryEntry> entries = _db.DiaryEntries.ToList();
+            Console.WriteLine("Retrieved diary entries: " + entries.Count);
+
             return View(entries);
         }
 
@@ -40,6 +42,7 @@ namespace DiaryApp.Controllers
                 return RedirectToAction("Index");
             }
 
+            TempData["Error"] = "Insufficient Privileges";
             return View(diary);
         }
 
