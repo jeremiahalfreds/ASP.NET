@@ -1,1 +1,1 @@
-# Diary
+# Diary app where your privacy is essential.
