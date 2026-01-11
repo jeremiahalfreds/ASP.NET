@@ -11,6 +11,7 @@ namespace DiaryApp.Controllers
 
         public IActionResult Index()
         {
+            Console.WriteLine("Hello Ralph");
             return View();
         }
 
